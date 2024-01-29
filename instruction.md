@@ -9,3 +9,14 @@
 1. Update the customer model
    ![Alt text](image.png)
    ![Alt text](image-1.png)
+
+2. Update the findCustomerById
+   ![Alt text](image-2.png)
+
+3. Update addWishListToItem controller
+   ![Alt text](image-3.png)
+
+
+## 30 Jan
+
+
