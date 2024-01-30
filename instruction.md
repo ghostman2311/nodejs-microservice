@@ -16,7 +16,10 @@
 3. Update addWishListToItem controller
    ![Alt text](image-3.png)
 
-
 ## 30 Jan
 
+1. Update the AddCartItem controller
+   ![Alt text](image-4.png)
+
+2. Now remove product and shopping repository and services
 
