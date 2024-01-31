@@ -21,5 +21,15 @@
 1. Update the AddCartItem controller
    ![Alt text](image-4.png)
 
-2. Now remove product and shopping repository and services
+2. Now remove product and shopping repository and services.
 
+## 31 Jan
+
+1. Create app-event.js in src/api/app-event.js
+2. What we are doing in this file is just providing a way/webhook so other applications can connect with our application
+   ![Alt text](image-5.png)
+3. Update the root index.js like this
+   ![Alt text](image-6.png)
+4. Use postman to test this
+   ![Alt text](image-7.png)
+5. Now Make sure that Customer endpoints are working fine.
