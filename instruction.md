@@ -33,3 +33,11 @@
 4. Use postman to test this
    ![Alt text](image-7.png)
 5. Now Make sure that Customer endpoints are working fine.
+
+## 4 Feb(continue from 25)
+
+1. Delete the address, order models from product ms
+2. Delete customer and shopping repository
+3. Delete customer and shopping services.
+4. Create app-events.js in api folder
+   ![alt text](image-8.png)
