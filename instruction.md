@@ -41,3 +41,14 @@
 3. Delete customer and shopping services.
 4. Create app-events.js in api folder
    ![alt text](image-8.png)
+
+## 6 Feb
+
+1. Install axios in product
+2. Create publishCustomerEvent function and publishShoppingEvent function in utils index.js
+3. In publishCustomerEvent function call customer app events endpoints.
+   ![alt text](image-9.png)
+4. Create getProductPayload in product services
+   ![alt text](image-10.png)
+5. Update the wishlist function in product api
+   ![alt text](image-11.png)
