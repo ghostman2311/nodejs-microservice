@@ -52,3 +52,13 @@
    ![alt text](image-10.png)
 5. Update the wishlist function in product api
    ![alt text](image-11.png)
+
+## 7 Feb(continue from 6.47)
+
+1. Update the delete wishlist endpoint for product
+   ![alt text](image-12.png)
+2. Update the cart controller like this
+   ![alt text](image-13.png)
+3. Update delete cart endpoint for product like this
+   ![alt text](image-14.png)
+4.
