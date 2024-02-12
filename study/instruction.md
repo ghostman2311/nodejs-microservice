@@ -61,4 +61,14 @@
    ![alt text](image-13.png)
 3. Update delete cart endpoint for product like this
    ![alt text](image-14.png)
-4.
+
+## 12 Feb
+
+1. Delete address and customer and products from shopping
+2. Add cart model like this
+   ![alt text](image-15.png)
+3. Update items inside the cart like this
+   ![alt text](image-16.png)
+4. Update items inside orderSchema
+   ![alt text](image-17.png)
+5.
