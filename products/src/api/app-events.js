@@ -1,6 +1,6 @@
 const ProductService = require("../services/product-service");
 
-module.export = (app) => {
+module.exports = (app) => {
   app.use("/app-events", async (req, res) => {
     const service = new ProductService();
     const { payload } = req.body;

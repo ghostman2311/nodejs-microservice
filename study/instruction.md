@@ -71,4 +71,57 @@
    ![alt text](image-16.png)
 4. Update items inside orderSchema
    ![alt text](image-17.png)
-5.
+5. Remove populate from orders function in repository
+6. Add new function Add to cart in orders-repository
+   ![alt text](image-18.png)
+   ![alt text](image-19.png)
+7. In Create new order function, update the profile to cart like this
+   ![alt text](image-20.png)
+
+8. Update the profile.cart variable to cart.items
+9. Update the last line of function like this
+   ![alt text](image-21.png)
+10. Add getCart function in shopping service
+    ![alt text](image-22.png)
+11. Add Manage Cart function
+    ![alt text](image-23.png)
+
+## 13 Feb
+
+1. Remove customer and products service.
+2. Remove customer and products api.
+3. Follow the github repo
+
+## 16 Feb
+
+1. Suppose customer service is down, how we will be communicating ?
+   ![alt text](image-24.png)
+
+2. To solve this problem, message broker comes into the picture. we will publish the event in common channel no matter if service is down or not.
+3. Delete gateway folder.
+4. Remove these two function from product utils
+   ![alt text](image-25.png)
+5. Download rabbitmq or cloudamqp.com and install amqplib npm in three services
+6. Create three new function like this in products/utils
+   ![alt text](image-26.png)
+
+7. Subscribe message function
+   ![alt text](image-27.png)
+
+8. These are the things that is happening in above functions
+   ![alt text](image-28.png)
+
+9. Add message broker url and exchange name inside the config
+   ![alt text](image-30.png)
+
+10. Add message broker url in env and import in config file.
+    ![alt text](image-29.png)
+
+11. Create channel in root file and pass it to express app function
+    ![alt text](image-31.png)
+
+12. Pass channel in productapi function, In add wishlist function. Modify it like this
+    ![alt text](image-32.png)
+
+13. Wherever we are using the PublishCustomerEvent just replace it with Publish Message function.
+14. Just do same for customer service and add queue name in config as "Shopping queue"

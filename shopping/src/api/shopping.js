@@ -1,50 +1,59 @@
 const ShoppingService = require("../services/shopping-service");
-const UserService = require('../services/customer-service');
-const UserAuth = require('./middlewares/auth');
+const { PublishCustomerEvent } = require("../utils");
+const UserAuth = require("./middlewares/auth");
+const { CUSTOMER_SERVICE } = require("../config");
 
-module.exports = (app) => {
-    
-    const service = new ShoppingService();
-    const userService = new UserService();
+module.exports = (app, channel) => {
+  const service = new ShoppingService();
 
-    app.post('/shopping/order',UserAuth, async (req,res,next) => {
+  // SubscribeMessage(channel, service);
 
-        const { _id } = req.user;
-        const { txnNumber } = req.body;
+  app.post("/order", UserAuth, async (req, res, next) => {
+    const { _id } = req.user;
+    const { txnNumber } = req.body;
 
+    const { data } = await service.PlaceOrder({ _id, txnNumber });
 
-        try {
-            const { data } = await service.PlaceOrder({_id, txnNumber});
-            return res.status(200).json(data);
-            
-        } catch (err) {
-            next(err)
-        }
+    const payload = await service.GetOrderPayload(_id, data, "CREATE_ORDER");
 
-    });
+    PublishCustomerEvent(payload);
 
-    app.get('/shopping/orders',UserAuth, async (req,res,next) => {
+    res.status(200).json(data);
+  });
 
-        const { _id } = req.user;
+  app.get("/orders", UserAuth, async (req, res, next) => {
+    const { _id } = req.user;
 
-        try {
-            const { data } = await userService.GetShopingDetails(_id);
-            return res.status(200).json(data.orders);
-        } catch (err) {
-            next(err);
-        }
+    const { data } = await service.GetOrders(_id);
 
-    });
-       
-    
-    app.get('/shopping/cart', UserAuth, async (req,res,next) => {
+    res.status(200).json(data);
+  });
 
-        const { _id } = req.user;
-        try {
-            const { data } = await userService.GetShopingDetails(_id);
-            return res.status(200).json(data.cart);
-        } catch (err) {
-            next(err);
-        }
-    });
-}
+  app.put("/cart", UserAuth, async (req, res, next) => {
+    const { _id } = req.user;
+
+    const { data } = await service.AddToCart(_id, req.body._id);
+
+    res.status(200).json(data);
+  });
+
+  app.delete("/cart/:id", UserAuth, async (req, res, next) => {
+    const { _id } = req.user;
+
+    const { data } = await service.AddToCart(_id, req.body._id);
+
+    res.status(200).json(data);
+  });
+
+  app.get("/cart", UserAuth, async (req, res, next) => {
+    const { _id } = req.user;
+
+    const { data } = await service.GetCart({ _id });
+
+    return res.status(200).json(data);
+  });
+
+  app.get("/whoami", (req, res, next) => {
+    return res.status(200).json({ msg: "/shoping : I am Shopping Service" });
+  });
+};
