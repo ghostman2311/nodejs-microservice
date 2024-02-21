@@ -125,3 +125,10 @@
 
 13. Wherever we are using the PublishCustomerEvent just replace it with Publish Message function.
 14. Just do same for customer service and add queue name in config as "Shopping queue"
+
+## 22 Feb
+
+1. In api/customer.js, Import subscribe message and pass service
+   ![alt text](image-33.png)
+
+2. Now test the api, add a log to subscribe message function. i.e sent data and recieved data in publishMessage
